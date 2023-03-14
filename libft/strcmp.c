@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   strcmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/14 14:43:13 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/14 18:19:10 by armartir         ###   ########.fr       */
+/*   Created: 2023/03/14 18:21:50 by armartir          #+#    #+#             */
+/*   Updated: 2023/03/14 18:21:52 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-
-// void    validation(int *ac, char ***av)
-// {
-// 	if (!(ft_strncmp("here_doc", av[1], ft_strlen(av[1]))))
-		
-// }
-
-int main(int argc, char **argv, char **envp)
+int	ft_strcmp(const char *str1, const char *str2)
 {
-	(void)envp;
-	(void)argc;
-	// if (argc < 5)
-	// 	return (1);
-	// validation(&argc, &argv);
-    printf ("stea:   %d \n",access(argv[1], F_OK));
-	
-	return 0;
+	size_t	i;
+
+	i = 0;
+	while ((str1[i] || str2[i]))
+	{
+		if (str1[i] != str2[i])
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		i++;
+	}
+	if (str1[i] != str2[i])
+		return (-1);
+	return (0);
 }
