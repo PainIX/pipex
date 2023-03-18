@@ -36,13 +36,15 @@ bonus: all
 $(NAME): WAIT_COMPILE_MSG $(OBJS)
 	@echo "${GREEN}-> Compiling LIBFT...${RESET}"
 	@make -C $(LIBFT) all
-	@$(GCC) $(CFLAGS) $(LIBS) -L$(LIBFT) -lft $(OBJS) -o $(NAME)
+	@$(GCC) $(LIBS) -L$(LIBFT) -lft $(OBJS) -o $(NAME)
+#	@$(GCC) $(CFLAGS) $(LIBS) -L$(LIBFT) -lft $(OBJS) -o $(NAME)
 	@make DONE_MSG
 
 $(OBJ)/%.o: $(SRC)/%.c
 	@mkdir -p $(OBJ) $(OBJ_DIR)
 	@echo "${YELLOW}Compiling $^${RESET}"
-	@$(GCC) $(CFLAGS) $(LIBS) -c $< -o $@
+	@$(GCC) $(LIBS) -c $< -o $@
+#	@$(GCC) $(CFLAGS) $(LIBS) -c $< -o $@
 
 clean: DELETE_OBJ_MSG
 	@make -C $(LIBFT) clean
