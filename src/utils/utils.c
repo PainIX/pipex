@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 12:21:34 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/19 20:02:07 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/19 21:27:56 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ void	write_error(int errno, char *msg_0, char *msg_1)
 	}
 	if (msg_1)
 	{
-		ft_putstr_fd("\n", 2);
+		ft_putstr_fd(" ", 2);
 		ft_putstr_fd(msg_1, 2);
 	}
 	ft_putstr_fd("\n", 2);
-	if (errno)
+	if (errno < 128)
 		exit(errno);
 }
 
@@ -86,7 +86,6 @@ void	perm_check(int *ac, char ***av)
 		if (!(access((*av)[last_index], F_OK))
 			&& access((*av)[last_index], W_OK))
 			write_error(13, (*av)[1], (*av)[last_index]);
-		write_error(13, (*av)[1], 0);
 	}
 	if (!(access((*av)[last_index], F_OK))
 		&& access((*av)[last_index], W_OK))

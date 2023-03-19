@@ -6,12 +6,11 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:43:13 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/19 20:00:59 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/19 22:17:06 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <errno.h>
 
 void	pipe_cmnds(char *cmd_line, char **cmnds)
 {
@@ -62,18 +61,15 @@ void	execute_pipe(char **paths, int ac, char **av)
 	{
 		cmnd = ft_split(av[ind], ' ');
 		tmp = is_cmnd_exe(paths, *cmnd);
-		if (tmp)
-		{
-			if (ind != (ac - 1))
-				pipe_cmnds(tmp, cmnd);
-			else
-			{
-				pid = fork();
-				if (!pid)
-					exit(execve(tmp, cmnd, NULL));
-			}
-		}
+		if (ind != (ac - 1))
+			pipe_cmnds(tmp, cmnd);
 		else
+		{
+			pid = fork();
+			if (!pid)
+				exit(execve(tmp, cmnd, NULL));
+		}
+		if (!tmp)
 			write_error(129, *cmnd, 0);
 		ind++;
 	}
