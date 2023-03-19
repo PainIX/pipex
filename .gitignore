@@ -5,3 +5,4 @@ pipex
 *.a
 test
 test1
+.here_doc

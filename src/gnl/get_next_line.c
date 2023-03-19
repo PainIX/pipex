@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 16:01:43 by sogabrie          #+#    #+#             */
-/*   Updated: 2023/02/09 19:52:02 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/19 13:02:05 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,33 +77,4 @@ char	*get_next_line(int fd)
 	line = get_and_clean(ptr);
 	ptr = get_and_clean_ptr(ptr);
 	return (line);
-}
-#include <stdio.h>
-int main ()
-{
-	int		dict;
-	char *ptr;
-
-	dict = open("8-twochar.txt", O_RDONLY);
-	dict = open("8-asgdha.txt", O_RDONLY);
-	ptr = get_next_line(dict);
-	printf("%s",ptr);
-	ptr = get_next_line(dict);
-	printf("%s",ptr);
-	ptr = get_next_line(dict);
-	printf("%s",ptr);
-	ptr = get_next_line(dict);
-	printf("%s",ptr);
-	ptr = get_next_line(dict);
-	printf("%s",ptr);
-	ptr = get_next_line(dict);
-	printf("%s",ptr);
-	ptr = get_next_line(dict);
-	printf("%s",ptr);
-	ptr = get_next_line(dict);
-	printf("%s",ptr);
-	ptr = get_next_line(dict);
-	printf("%s",ptr);
-	ptr = get_next_line(dict);
-	printf("%s",ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:13:19 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/18 13:39:29 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/19 13:04:05 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	write_error(int errno, char *msg_0, char *msg_1);
 void	free_s(char **str);
 void	free_d(char ***addr);
 void	fd_dup(int fd_f, int fd_to);
+char	**find_path(char **env);
 
 #endif
