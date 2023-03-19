@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:43:13 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/19 19:43:58 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/19 20:00:59 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	execute_pipe(char **paths, int ac, char **av)
 					exit(execve(tmp, cmnd, NULL));
 			}
 		}
+		else
+			write_error(129, *cmnd, 0);
 		ind++;
 	}
 }

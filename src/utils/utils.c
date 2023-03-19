@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 12:21:34 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/19 19:45:04 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/19 20:02:07 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	write_error(int errno, char *msg_0, char *msg_1)
 		ft_putstr_fd(msg_1, 2);
 	}
 	ft_putstr_fd("\n", 2);
-	if (errno < 128)
+	if (errno)
 		exit(errno);
 }
 
