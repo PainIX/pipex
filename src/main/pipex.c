@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:43:13 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/19 22:17:06 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/19 22:59:54 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc < 5)
 		return (1);
-	validation(&argc, &argv);
 	paths = find_path(envp);
+	validation(&argc, &argv);
 	if (!paths)
 		return (0);
 	execute_pipe(paths, argc, argv);

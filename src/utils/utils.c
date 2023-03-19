@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 12:21:34 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/19 21:27:56 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/19 22:55:46 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ void	write_error(int errno, char *msg_0, char *msg_1)
 		ft_putstr_fd(msg_1, 2);
 	}
 	ft_putstr_fd("\n", 2);
-	if (errno < 128)
-		exit(errno);
+	// if (errno < 128)
+	// 	exit (errno);
 }
 
-void	perm_check(int *ac, char ***av)
+int	perm_check(int *ac, char ***av)
 {
 	int	last_index;
 
@@ -80,16 +80,16 @@ void	perm_check(int *ac, char ***av)
 	if (ft_strcmp("here_doc", (*av)[1])
 		&& access((*av)[1], F_OK))
 		write_error(2, (*av)[1], 0);
-	if (ft_strcmp("here_doc", (*av)[1])
-		&& access((*av)[1], R_OK))
-	{
-		if (!(access((*av)[last_index], F_OK))
-			&& access((*av)[last_index], W_OK))
-			write_error(13, (*av)[1], (*av)[last_index]);
-	}
 	if (!(access((*av)[last_index], F_OK))
 		&& access((*av)[last_index], W_OK))
 		write_error(13, (*av)[last_index], 0);
+	if (ft_strcmp("here_doc", (*av)[1])
+		&& access((*av)[1], R_OK))
+	{
+		write_error(13, (*av)[1], 0);
+		return (0);
+	}
+	return (1);
 }
 
 void	validation(int *ac, char ***av)
@@ -106,7 +106,12 @@ void	validation(int *ac, char ***av)
 		fd_dup(fd1, 1);
 		return ;
 	}
-	perm_check(ac, av);
+	if (!(perm_check(ac, av)))
+	{
+		*av += 3;
+		*ac -= 4;
+		return ;
+	}
 	fd0 = open((*av)[1], O_RDONLY);
 	fd1 = open((*av)[last_index], O_WRONLY | O_TRUNC | O_CREAT, 0755);
 	fd_dup(fd0, 0);

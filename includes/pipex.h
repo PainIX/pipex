@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:13:19 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/19 20:49:22 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/19 22:32:18 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define HERE_DOC ".here_doc"
 
 // Validation
-void	perm_check(int *ac, char ***av);
+int		perm_check(int *ac, char ***av);
 void	validation(int *ac, char ***av);
 
 // Here_Doc
