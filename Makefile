@@ -33,18 +33,18 @@ all: $(NAME)
 
 bonus: all
 
-$(NAME): WAIT_COMPILE_MSG $(OBJS)
+$(NAME): $(OBJS) Makefile
 	@echo "${GREEN}-> Compiling LIBFT...${RESET}"
 	@make -C $(LIBFT) all
 	@$(GCC) $(LIBS) -L$(LIBFT) -lft $(OBJS) -o $(NAME)
-#	@$(GCC) $(CFLAGS) $(LIBS) -L$(LIBFT) -lft $(OBJS) -o $(NAME)
+	@$(GCC) $(CFLAGS) $(LIBS) -L$(LIBFT) -lft $(OBJS) -o $(NAME)
 	@make DONE_MSG
 
 $(OBJ)/%.o: $(SRC)/%.c
 	@mkdir -p $(OBJ) $(OBJ_DIR)
 	@echo "${YELLOW}Compiling $^${RESET}"
 	@$(GCC) $(LIBS) -c $< -o $@
-#	@$(GCC) $(CFLAGS) $(LIBS) -c $< -o $@
+	@$(GCC) $(CFLAGS) $(LIBS) -c $< -o $@
 
 clean: DELETE_OBJ_MSG
 	@make -C $(LIBFT) clean
@@ -55,8 +55,6 @@ fclean: clean DELETE_PROGRAM_MSG
 re: fclean all
 
 # Helper messages
-WAIT_COMPILE_MSG:
-	@echo "${YELLOW}Please wait until program is compiling...${RESET}"
 DONE_MSG:
 	@echo "${GREEN}! DONE !${RESET}"
 DELETE_OBJ_MSG:

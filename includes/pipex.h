@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:13:19 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/19 13:04:05 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/19 19:42:53 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 // Validation
 void	perm_check(int *ac, char ***av);
-void    validation(int *ac, char ***av);
+void	validation(int *ac, char ***av);
 
 // Here_Doc
 void	wait_limiter(char *limiter, int fd);
@@ -38,5 +38,10 @@ void	free_s(char **str);
 void	free_d(char ***addr);
 void	fd_dup(int fd_f, int fd_to);
 char	**find_path(char **env);
+
+// Execute Pipe
+void	execute_pipe(char **paths, int ac, char **av);
+char	*is_cmnd_exe(char **paths, char *cmnd);
+void	pipe_cmnds(char *cmd_line, char **cmnds);
 
 #endif

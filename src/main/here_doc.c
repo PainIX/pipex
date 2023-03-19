@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 12:26:29 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/18 13:32:23 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/19 19:43:19 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	here_doc(int *ac, char ***av)
 
 	fd0 = open(HERE_DOC, O_WRONLY | O_CREAT | O_TRUNC, 0755);
 	wait_limiter((*av)[2], fd0);
+	perm_check(ac, av);
 	close(fd0);
 	fd0 = open(HERE_DOC, O_RDONLY);
 	fd_dup(fd0, 0);

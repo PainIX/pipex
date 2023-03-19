@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 12:21:34 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/19 16:50:24 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/19 19:45:04 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,26 @@ void	perm_check(int *ac, char ***av)
 	int	last_index;
 
 	last_index = ((*ac) - 1);
-	if (ft_strcmp("here_doc",(*av)[1])
+	if (!(ft_strcmp("here_doc", (*av)[1]))
+		&& access((*av)[last_index], W_OK))
+		unlink(HERE_DOC);
+	if (ft_strcmp("here_doc", (*av)[1])
 		&& access((*av)[1], F_OK))
-			write_error(2, (*av)[1], 0);
-	if (ft_strcmp("here_doc",(*av)[1])
+		write_error(2, (*av)[1], 0);
+	if (ft_strcmp("here_doc", (*av)[1])
 		&& access((*av)[1], R_OK))
 	{
-		if (!(access((*av)[last_index],F_OK))
-			&& access((*av)[last_index],W_OK))
-				write_error(13, (*av)[1], (*av)[last_index]);
-			write_error(13, (*av)[1], 0);
+		if (!(access((*av)[last_index], F_OK))
+			&& access((*av)[last_index], W_OK))
+			write_error(13, (*av)[1], (*av)[last_index]);
+		write_error(13, (*av)[1], 0);
 	}
-	if (!(access((*av)[last_index],F_OK))
-		&& access((*av)[last_index],W_OK))
-			write_error(13, (*av)[last_index], 0);
+	if (!(access((*av)[last_index], F_OK))
+		&& access((*av)[last_index], W_OK))
+		write_error(13, (*av)[last_index], 0);
 }
 
-void    validation(int *ac, char ***av)
+void	validation(int *ac, char ***av)
 {
 	int	fd0;
 	int	fd1;
@@ -102,9 +105,6 @@ void    validation(int *ac, char ***av)
 		fd1 = open((*av)[last_index], O_WRONLY | O_CREAT | O_APPEND, 0755);
 		here_doc(ac, av);
 		fd_dup(fd1, 1);
-		*ac +=4;
-		*av -=3;
-		perm_check(ac, av);
 		return ;
 	}
 	perm_check(ac, av);
