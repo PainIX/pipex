@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:43:13 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/19 22:59:54 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/20 14:56:56 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ int	main(int argc, char **argv, char **envp)
 		return (0);
 	execute_pipe(paths, argc, argv);
 	unlink(HERE_DOC);
+	unlink(".tmp");
 	return (0);
 }

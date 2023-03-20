@@ -15,6 +15,8 @@
 
 # include<unistd.h>
 # include<stdlib.h>
+// TODO: delete stdint
+# include <stdint.h>
 
 typedef struct s_list
 {

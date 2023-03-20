@@ -33,11 +33,17 @@ all: $(NAME)
 
 bonus: all
 
-$(NAME): $(OBJS) Makefile
+#$(NAME): $(OBJS) Makefile
+#	@echo "${GREEN}-> Compiling LIBFT...${RESET}"
+#	@make -C $(LIBFT) all
+#	@$(GCC) $(LIBS) -L$(LIBFT) -lft $(OBJS) -o $(NAME)
+#	@$(GCC) $(CFLAGS) $(LIBS) -L$(LIBFT) -lft $(OBJS) -o $(NAME)
+#	@make DONE_MSG
+
+$(NAME): $(OBJS)
 	@echo "${GREEN}-> Compiling LIBFT...${RESET}"
 	@make -C $(LIBFT) all
-	@$(GCC) $(LIBS) -L$(LIBFT) -lft $(OBJS) -o $(NAME)
-	@$(GCC) $(CFLAGS) $(LIBS) -L$(LIBFT) -lft $(OBJS) -o $(NAME)
+	@$(GCC) -o $(NAME) $(CFLAGS) $(OBJS) $(LIBS) -L$(LIBFT) -lft
 	@make DONE_MSG
 
 $(OBJ)/%.o: $(SRC)/%.c
