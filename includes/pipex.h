@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:13:19 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/22 15:14:46 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:58:37 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <fcntl.h>
 # include "libft.h"
 # include "get_next_line.h"
-// TODO: delete stdio
-# include <stdio.h>
 
 # define HERE_DOC ".here_doc"
 
@@ -38,6 +36,7 @@ void	free_s(char **str);
 void	free_d(char ***addr);
 void	fd_dup(int fd_f, int fd_to);
 char	**find_path(char **env);
+void	my_unlink(void);
 
 // Execute Pipe
 void	execute_pipe(char **paths, int ac, char **av);

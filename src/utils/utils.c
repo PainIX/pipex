@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 12:21:34 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/22 16:08:11 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:33:49 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	write_error(int errno, char *msg_0, char *msg_1)
 	char	*error;
 
 	if (errno == 129)
-		error = "Command not found: ";
+		error = "command not found: ";
 	else
 		error = strerror(errno);
 	ft_putstr_fd("zsh: ", 2);

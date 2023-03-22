@@ -1,8 +1,0 @@
-.DS_Store
-.vscode/
-pipex
-*.o
-*.a
-test
-test1
-.here_doc
