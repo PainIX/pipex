@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 12:21:34 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/20 15:00:44 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:08:11 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ char	**find_path(char **env)
 	}
 	paths = ft_split(env[i] + 5, ':');
 	i = 0;
-	while (paths[i])
-	{
-		paths[i] = ft_strjoin(paths[i], "/");
-		i++;
-	}
 	return (paths);
 }
 
@@ -65,8 +60,6 @@ void	write_error(int errno, char *msg_0, char *msg_1)
 		ft_putstr_fd(msg_1, 2);
 	}
 	ft_putstr_fd("\n", 2);
-	// if (errno < 128)
-	// 	exit (errno);
 }
 
 int	perm_check(int *ac, char ***av)
@@ -100,8 +93,10 @@ void	validation(int *ac, char ***av)
 	int	fd0;
 	int	fd1;
 	int	last_index;
+	int	count;
 
 	last_index = (*ac - 1);
+	count = 2;
 	if (!(ft_strcmp((*av)[1], "here_doc")))
 	{
 		fd1 = open((*av)[last_index], O_WRONLY | O_CREAT | O_APPEND, 0755);
@@ -109,17 +104,13 @@ void	validation(int *ac, char ***av)
 		fd_dup(fd1, 1);
 		return ;
 	}
-	if (!(perm_check(ac, av)))
-	{
-		fd0 = open(".tmp", O_WRONLY | O_TRUNC | O_CREAT, 0755);
-		*av += 3;
-		*ac -= 4;
-	}
+	else if (!(perm_check(ac, av)) && count++)
+		fd0 = open(".tmp", O_RDONLY | O_TRUNC | O_CREAT, 0755);
 	else
 		fd0 = open((*av)[1], O_RDONLY);
 	fd1 = open((*av)[last_index], O_WRONLY | O_TRUNC | O_CREAT, 0755);
 	fd_dup(fd0, 0);
 	fd_dup(fd1, 1);
-	*av += 2;
-	*ac -= 3;
+	*av += count;
+	*ac -= count + 1;
 }

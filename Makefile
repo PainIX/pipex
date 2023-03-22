@@ -43,14 +43,14 @@ bonus: all
 $(NAME): $(OBJS)
 	@echo "${GREEN}-> Compiling LIBFT...${RESET}"
 	@make -C $(LIBFT) all
-	@$(GCC) -o $(NAME) $(CFLAGS) $(OBJS) $(LIBS) -L$(LIBFT) -lft
+	@$(GCC) -o $(NAME)  $(OBJS) $(LIBS) -L$(LIBFT) -lft
 	@make DONE_MSG
 
 $(OBJ)/%.o: $(SRC)/%.c
 	@mkdir -p $(OBJ) $(OBJ_DIR)
 	@echo "${YELLOW}Compiling $^${RESET}"
 	@$(GCC) $(LIBS) -c $< -o $@
-	@$(GCC) $(CFLAGS) $(LIBS) -c $< -o $@
+	@$(GCC)  $(LIBS) -c $< -o $@
 
 clean: DELETE_OBJ_MSG
 	@make -C $(LIBFT) clean

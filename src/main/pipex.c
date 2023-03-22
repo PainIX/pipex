@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 14:43:13 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/20 14:56:56 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:10:29 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,24 @@ char	*is_cmnd_exe(char **paths, char *cmnd)
 {
 	char		*tmp;
 
+	cmnd = ft_strjoin("/", cmnd);
 	while (*paths)
 	{
 		if (!(access(cmnd, F_OK)))
+		{
+			free(tmp);
 			return (cmnd);
+		}
 		tmp = ft_strjoin(*paths, cmnd);
 		if (!(access(tmp, F_OK)))
+		{
+			free (cmnd);
 			return (tmp);
+		}
+		free(tmp);
 		paths++;
 	}
+	free(cmnd);
 	return (0);
 }
 
@@ -71,6 +80,8 @@ void	execute_pipe(char **paths, int ac, char **av)
 		}
 		if (!tmp)
 			write_error(129, *cmnd, 0);
+		free_d(&cmnd);
+		free_s(&tmp);
 		ind++;
 	}
 }
@@ -86,6 +97,7 @@ int	main(int argc, char **argv, char **envp)
 	if (!paths)
 		return (0);
 	execute_pipe(paths, argc, argv);
+	free_d(&paths);
 	unlink(HERE_DOC);
 	unlink(".tmp");
 	return (0);
