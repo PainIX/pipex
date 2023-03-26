@@ -6,7 +6,7 @@
 /*   By: armartir <armartir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 22:56:57 by armartir          #+#    #+#             */
-/*   Updated: 2023/03/22 22:58:48 by armartir         ###   ########.fr       */
+/*   Updated: 2023/03/26 15:42:30 by armartir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	execute_pipe(char **paths, int ac, char **av)
 			else
 				wait(NULL);
 		}
-		if (!tmp)
+		if (!tmp || (!tmp && ind == (ac - 1)))
 			write_error(129, *cmnd, 0);
 		free_d(&cmnd);
 		free_s(&tmp);
