@@ -73,7 +73,7 @@ void	execute_pipe(char **paths, int ac, char **av)
 	pid_t	pid;
 
 	ind = -1;
-	while (ind++ < ac)
+	while (ind++ < ac - 1)
 	{
 		cmnd = ft_split(av[ind], ' ');
 		tmp = is_cmnd_exe(paths, *cmnd);
